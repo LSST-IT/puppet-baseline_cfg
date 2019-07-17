@@ -21,14 +21,13 @@ class stdcfg::time (
     ensure => stopped,
     enable => false,
   }
-  package { "ntp":
+  package { 'ntp':
     ensure => purged,
   }
 
   # ENABLE CHRONY (requires beergeek-chronyd module)
-    class { '::chronyd':
-      servers => $ntp_servers,
-    }
+  class { '::chronyd':
+    servers => $ntp_servers,
   }
 
 }

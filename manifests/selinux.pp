@@ -15,16 +15,16 @@ class stdcfg::selinux (
     default     => '0',
   }
 
-  exec { "set selinux status":
-    command => "/usr/sbin/setenforce $status_code",
-    unless  => "/usr/sbin/sestatus | /bin/egrep -i 'selinux status|current mode' | /bin/egrep -i '$status'",
+  exec { 'set selinux status':
+    command => "/usr/sbin/setenforce ${status_code}",
+    unless  => "/usr/sbin/sestatus | /bin/egrep -i 'selinux status|current mode' | /bin/egrep -i '${status}'",
   }
 
-  file_line { "set selinux config":
+  file_line { 'set selinux config':
     ensure => 'present',
-    path => '/etc/selinux/config',
-    line => "SELINUX=$status",
-    match => '^SELINUX=.*$',
+    path   => '/etc/selinux/config',
+    line   => "SELINUX=${status}",
+    match  => '^SELINUX=.*$',
   }
 
 
