@@ -34,7 +34,6 @@ The `stdcfg` module affects the following services on a given server:
 This module requires the following puppet modules to be installed:
 
   * https://forge.puppet.com/beergeek/chronyd
-  * https://forge.puppet.com/puppetlabs/firewall
   * https://forge.puppet.com/puppetlabs/inifile
   * https://forge.puppet.com/puppetlabs/stdlib
   * https://forge.puppet.com/saz/timezone
@@ -66,8 +65,4 @@ The following parameters let you extend stdcfg options beyond the default:
   * `stdcfg::selinux::status` - String of status for SElinux
   * `stdcfg::time::ntp_servers` - Array of ntp servers to use
   * `stdcfg::time::timezone` - String of timezone to use
-
-## Limitations
-
-This stdcfg module only supports RHEL/CentOS servers that are configured to use `iptables`.
 
