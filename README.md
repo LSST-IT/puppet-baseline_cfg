@@ -59,7 +59,7 @@ The following parameters let you extend stdcfg options beyond the default:
   * `stdcfg::motd::notice` - String with optional notice to include in motd
   * `stdcfg::puppet::config_file` - String of puppet config file full path
   * `stdcfg::puppet::environment` - String of puppet environment to use
-  * `stdcfg::puppet::runinterval: - String of puppet agent run interval
+  * `stdcfg::puppet::runinterval` - String of puppet agent run interval
   * `stdcfg::puppet::server` - String of puppet server to use
   * `stdcfg::puppet::service_state` - String of puppet agent server status
   * `stdcfg::selinux::status` - String of status for SElinux
