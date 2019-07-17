@@ -1,1 +1,14 @@
 ---
+stdcfg::email::canonical_aliases: |
+  root /dev/null
+stdcfg::email::virtual_aliases: |
+  root /dev/null
+stdcfg::email::mydomain: 'local'
+stdcfg::email::relayhost: 'localhost'
+
+stdcfg::selinux::status: 'disabled'
+
+stdcfg::time::ntp_servers
+  - 'pool.ntp.org'
+stdcfg::time::timezone: 'UTC'
+
