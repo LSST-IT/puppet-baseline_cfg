@@ -31,10 +31,6 @@ The `stdcfg` module affects the following services on a given server:
 
 ### Setup Requirements
 
-The following parameters must (or should) be defined:
-
-  * `stdcfg::kerberos::createhostkeytab` - String of BASE64 encoded keytab file used for creating kerberos host keys
-
 This module requires the following puppet modules to be installed:
 
   * https://forge.puppet.com/beergeek/chronyd
