@@ -9,6 +9,8 @@
 class stdcfg {
     include ::stdcfg::additional_packages
     include ::stdcfg::email
+    include ::stdcfg::motd
+    include ::stdcfg::puppet
     include ::stdcfg::selinux
     include ::stdcfg::time
 }

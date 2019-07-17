@@ -34,7 +34,6 @@ The `stdcfg` module affects the following services on a given server:
 This module requires the following puppet modules to be installed:
 
   * https://forge.puppet.com/beergeek/chronyd
-  * https://forge.puppet.com/puppetlabs/firewall
   * https://forge.puppet.com/puppetlabs/inifile
   * https://forge.puppet.com/puppetlabs/stdlib
   * https://forge.puppet.com/saz/timezone
@@ -55,11 +54,15 @@ The following parameters let you extend stdcfg options beyond the default:
   * `stdcfg::email::virtual_aliases` - String of virutal email aliases
   * `stdcfg::email::mydomain` - String of domain used by email
   * `stdcfg::email::relayhost` - String of relayhost used by email (smtp server)
+  * `stdcfg::motd::next_maintenance` - Array of start/stop date/times
+  * `stdcfg::motd::next_maintenance_timezone` - String with timezone for maintenance
+  * `stdcfg::motd::notice` - String with optional notice to include in motd
+  * `stdcfg::puppet::config_file` - String of puppet config file full path
+  * `stdcfg::puppet::environment` - String of puppet environment to use
+  * `stdcfg::puppet::runinterval: - String of puppet agent run interval
+  * `stdcfg::puppet::server` - String of puppet server to use
+  * `stdcfg::puppet::service_state` - String of puppet agent server status
   * `stdcfg::selinux::status` - String of status for SElinux
   * `stdcfg::time::ntp_servers` - Array of ntp servers to use
   * `stdcfg::time::timezone` - String of timezone to use
-
-## Limitations
-
-This stdcfg module only supports RHEL/CentOS servers that are configured to use `iptables`.
 
