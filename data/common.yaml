@@ -6,6 +6,17 @@ stdcfg::email::virtual_aliases: |
 stdcfg::email::mydomain: 'local'
 stdcfg::email::relayhost: 'localhost'
 
+stdcfg::motd::next_maintenance:
+  - 'none'
+stdcfg::motd::next_maintenance_timezone: 'UTC'
+stdcfg::motd::notice: FALSE
+
+stdcfg::puppet::config_file: '/etc/puppetlabs/puppet/puppet.conf'
+stdcfg::puppet::environment: production
+stdcfg::puppet::runinterval: 30m
+stdcfg::puppet::server: puppet
+stdcfg::puppet::service_state: running
+
 stdcfg::selinux::status: 'disabled'
 
 stdcfg::time::ntp_servers
