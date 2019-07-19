@@ -55,6 +55,7 @@ The following parameters let you extend stdcfg options beyond the default:
   * `stdcfg::email::mydomain` - String of domain used by email
   * `stdcfg::email::relayhost` - String of relayhost used by email (smtp server)
   * `stdcfg::motd::next_maintenance` - Array of start/stop date/times
+  * `stdcfg::motd::next_maintenance_details` - String with more details for maintenance
   * `stdcfg::motd::next_maintenance_timezone` - String with timezone for maintenance
   * `stdcfg::motd::notice` - String with optional notice to include in motd
   * `stdcfg::puppet::config_file` - String of puppet config file full path
