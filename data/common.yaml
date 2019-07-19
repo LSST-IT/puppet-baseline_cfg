@@ -8,6 +8,7 @@ stdcfg::email::relayhost: 'localhost'
 
 stdcfg::motd::next_maintenance:
   - 'none'
+stdcfg::motd::next_maintenance_details: ''
 stdcfg::motd::next_maintenance_timezone: 'UTC'
 stdcfg::motd::notice: FALSE
 

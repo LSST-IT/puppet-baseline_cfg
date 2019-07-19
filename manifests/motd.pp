@@ -13,6 +13,7 @@ class stdcfg::motd(
     # first element may be 'none' to prevent information about
     # next maintenance from showing (e.g., if next maintenance is distant)
   String $next_maintenance_timezone, # timezone used for next_maintenance
+  String $next_maintenance_details,  # more details about next_maintenance
   $notice,  # optional notice string OR FALSE to disable
 )
 {
@@ -37,10 +38,10 @@ class stdcfg::motd(
     }
     else
     {
-      $date_string = "${start_date} ${start_time} - ${end_date} ${end_time} CT"
+      $date_string = "${start_date} ${start_time} - ${end_date} ${end_time} ${next_maintenance_timezone}"
     }
     $maintenance_message = "
-Next scheduled maintenance: ${date_string}  http://ls.st/0l6"
+Next scheduled maintenance: ${date_string} ${next_maintenance_details}"
   }
   else {
     $maintenance_message = ''
@@ -53,6 +54,8 @@ ${notice}"
     $notice_message = ''
   }
 
+  $hw_array = split($::manufacturer, Regexp['[\s,]'])
+  $hardware = $hw_array[0]
   $memorysize_gb = ceiling($::memorysize_mb/1024)
   $cpu_array = split($::processor0, ' @ ')
   $cpu_speed = $cpu_array[1]
@@ -60,9 +63,8 @@ ${notice}"
   ## MOTD SYSTEM INFORMATION
   $motdcontent = @("EOF")
     ${::fqdn} (${::ipaddress})
-      OS: ${::operatingsystem} ${::operatingsystemrelease}   HW: ${::manufacturer}   CPU: ${::processorcount}x ${cpu_speed}   RAM: ${memorysize_gb} GB
-      Site: ${::site}  DC: ${::datacenter}  Cluster: ${::cluster}  Role: ${::role}
-      Puppet environment: ${environment}${notice_message}${maintenance_message}
+      OS: ${::operatingsystem} ${::operatingsystemrelease}   HW: ${hardware}   CPU: ${::processorcount}x ${cpu_speed}   RAM: ${memorysize_gb} GB
+      Site: ${::site}  DC: ${::datacenter}  Cluster: ${::cluster}  Role: ${::role}${notice_message}${maintenance_message}
     | EOF
   file { '/etc/motd':
     ensure  => file,
