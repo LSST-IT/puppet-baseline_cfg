@@ -1,12 +1,12 @@
-# stdcfg::motd
+# baseline_cfg::motd
 # 
 # Configure motd
 #
 # @summary Configure motd
 #
 # @example
-#   include stdcfg::motd
-class stdcfg::motd(
+#   include baseline_cfg::motd
+class baseline_cfg::motd(
 
   # Parameters
   Array[String] $next_maintenance, # tuple with two date stamps, e.g., '2017-10-19T08:00:00'

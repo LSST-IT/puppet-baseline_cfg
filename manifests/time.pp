@@ -1,12 +1,12 @@
-# stdcfg::time
+# baseline_cfg::time
 #
 # Manage settings related to time syncing, timezone, etc.
 #
 # @summary Manage settings related to time syncing, timezone, etc.
 #
 # @example
-#   include stdcfg::time
-class stdcfg::time (
+#   include baseline_cfg::time
+class baseline_cfg::time (
   Array[String] $ntp_servers,
   String        $timezone,
 ) {

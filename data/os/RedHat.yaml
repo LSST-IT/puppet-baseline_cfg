@@ -1,4 +1,4 @@
 ---
-stdcfg::email::required_pkgs:
+baseline_cfg::email::required_pkgs:
   - postfix
 

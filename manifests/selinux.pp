@@ -1,12 +1,12 @@
-# stdcfg::selinux
+# baseline_cfg::selinux
 #
 # Configure selinux status
 #
 # @summary Configure selinux status
 #
 # @example
-#   include stdcfg::selinux
-class stdcfg::selinux (
+#   include baseline_cfg::selinux
+class baseline_cfg::selinux (
   String $status,
 ) {
 

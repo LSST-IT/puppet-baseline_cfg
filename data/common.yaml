@@ -1,26 +1,26 @@
 ---
-stdcfg::email::canonical_aliases: |
+baseline_cfg::email::canonical_aliases: |
   root /dev/null
-stdcfg::email::virtual_aliases: |
+baseline_cfg::email::virtual_aliases: |
   root /dev/null
-stdcfg::email::mydomain: 'local'
-stdcfg::email::relayhost: 'localhost'
+baseline_cfg::email::mydomain: 'local'
+baseline_cfg::email::relayhost: 'localhost'
 
-stdcfg::motd::next_maintenance:
+baseline_cfg::motd::next_maintenance:
   - 'none'
-stdcfg::motd::next_maintenance_details: ''
-stdcfg::motd::next_maintenance_timezone: 'UTC'
-stdcfg::motd::notice: FALSE
+baseline_cfg::motd::next_maintenance_details: ''
+baseline_cfg::motd::next_maintenance_timezone: 'UTC'
+baseline_cfg::motd::notice: FALSE
 
-stdcfg::puppet::config_file: '/etc/puppetlabs/puppet/puppet.conf'
-stdcfg::puppet::environment: production
-stdcfg::puppet::runinterval: 30m
-stdcfg::puppet::server: puppet
-stdcfg::puppet::service_state: running
+baseline_cfg::puppet::config_file: '/etc/puppetlabs/puppet/puppet.conf'
+baseline_cfg::puppet::environment: production
+baseline_cfg::puppet::runinterval: 30m
+baseline_cfg::puppet::server: puppet
+baseline_cfg::puppet::service_state: running
 
-stdcfg::selinux::status: 'disabled'
+baseline_cfg::selinux::status: 'disabled'
 
-stdcfg::time::ntp_servers
+baseline_cfg::time::ntp_servers
   - 'pool.ntp.org'
-stdcfg::time::timezone: 'UTC'
+baseline_cfg::time::timezone: 'UTC'
 

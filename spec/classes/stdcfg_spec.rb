@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'stdcfg' do
+describe 'baseline_cfg' do
   on_supported_os.each do |os, os_facts|
     context "on #{os}" do
       let(:facts) { os_facts }

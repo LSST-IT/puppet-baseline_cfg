@@ -1,10 +1,10 @@
-# stdcfg::email
+# baseline_cfg::email
 #
 # @summary Basic email setup
 #
 # @example
-#   include stdcfg::email
-class stdcfg::email (
+#   include baseline_cfg::email
+class baseline_cfg::email (
   Array[ String[1] ] $required_pkgs,
   String             $canonical_aliases,
   String             $virtual_aliases,
