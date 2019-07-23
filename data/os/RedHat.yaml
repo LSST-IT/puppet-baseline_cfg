@@ -1,8 +1,9 @@
 ---
-baseline_cfg::additional_packages:
-  - iproute
-  - procps
-  - hostname
+baseline_cfg::additional_packages::pkg_list:
+    RedHat:
+        iproute:
+        procps:
+        hostname:
 
 baseline_cfg::email::required_pkgs:
   - postfix

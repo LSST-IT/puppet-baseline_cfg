@@ -4,21 +4,32 @@
 #
 # @summary Configure motd
 #
+# @param next_maintenance
+#        tuple with two date stamps, e.g., '2017-10-19T08:00:00'
+#        first element may be 'none' to prevent information about
+#        next maintenance from showing (e.g., if next maintenance is distant)
+#
+# @param next_maintenance_timezone
+#        timezone used for next_maintenance
+#
+# @param next_maintenance_details
+#        more details about next_maintenance
+#
+# @param notice
+#        An additional message to add to the end of the motd
+#
 # @example
 #   include baseline_cfg::motd
 class baseline_cfg::motd(
 
   # Parameters
-  Array[String] $next_maintenance, # tuple with two date stamps, e.g., '2017-10-19T08:00:00'
-    # first element may be 'none' to prevent information about
-    # next maintenance from showing (e.g., if next maintenance is distant)
+
+  Array[String] $next_maintenance,   # tuple with two date stamps, e.g., '2017-10-19T08:00:00'
   String $next_maintenance_timezone, # timezone used for next_maintenance
   String $next_maintenance_details,  # more details about next_maintenance
-  $notice,  # optional notice string OR FALSE to disable
+  String $notice,                    # additional message to add to the end of the motd
 )
 {
-
-  ## DEFAULT MOTD TO DISPLAY SERVER CONFIGURATION
 
   ## PROCESS $next_maintenance AND DETERMINE $maintenance_message
   $maintenance_begins = $next_maintenance[0]
@@ -47,26 +58,31 @@ Next scheduled maintenance: ${date_string} ${next_maintenance_details}"
     $maintenance_message = ''
   }
 
-  if $notice {
-    $notice_message = "
-${notice}"
-  } else {
-    $notice_message = ''
+  $notice_message = $notice ? {
+    default   => '',
+    String[1] => "\n${notice}",
   }
 
-  $hw_array = split($::manufacturer, Regexp['[\s,]'])
-  $hardware = $hw_array[0]
-  $memorysize_gb = ceiling($::memorysize_mb/1024)
-  $cpu_array = split($::processor0, ' @ ')
-  $cpu_speed = $cpu_array[1]
+  $hardware = $::manufacturer ? {
+    String[1] => split($::manufacturer, Regexp['[\s,]'])[0],
+    default   => if $::is_virtual { $::virtual } else { '?' }
+  }
+
+  $ipaddr=$facts['networking']['ip']
+  $os_name=$facts['os']['name']
+  $os_ver=$facts['os']['release']['full']
+  $cpu_num=$facts['processors']['count']
+  $cpu_speed=$facts['processors']['speed']
+  $ram=$facts['memory']['system']['total']
 
   ## MOTD SYSTEM INFORMATION
   $motdcontent = @("EOF")
-    ${::fqdn} (${::ipaddress})
-      OS: ${::operatingsystem} ${::operatingsystemrelease}   HW: ${hardware}   CPU: ${::processorcount}x ${cpu_speed}   RAM: ${memorysize_gb} GB
-      Site: ${::site}  DC: ${::datacenter}  Cluster: ${::cluster}  Role: ${::role}${notice_message}${maintenance_message}
+    ${::fqdn} (${ipaddr})
+      OS: ${os_name} ${os_ver}   HW: ${hardware}   CPU: (${cpu_num}) @ ${cpu_speed}   RAM: ${ram}
+      Site: ${::site}  Cluster: ${::cluster}  Role: ${::role}${maintenance_message}${notice_message}
     | EOF
-  file { '/etc/motd':
+
+file { '/etc/motd':
     ensure  => file,
     content => $motdcontent,
     mode    => '0644',

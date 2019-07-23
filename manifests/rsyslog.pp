@@ -1,6 +1,6 @@
 # baseline_cfg::rsyslog
 #
-# Manage settings related to rsyslog and log forwarding
+# Setup custom rsyslog yum repo
 #
 # @summary Manage settings related to rsyslog and log forwarding
 #
@@ -10,7 +10,6 @@ class baseline_cfg::rsyslog (
   String $yumrepo_baseurl,
   String $yumrepo_gpgkey,
   String $yumrepo_name,
-  Hash   $config,
 ) {
 
   ## install Yum repo for ryslog
@@ -23,8 +22,5 @@ class baseline_cfg::rsyslog (
     before   => Class['rsyslog::install'],
   }
 
-  class { 'rsyslog::client':
-    * => $config
-  }
-
+  include ::rsyslog::client
 }

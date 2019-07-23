@@ -44,23 +44,7 @@ class baseline_cfg::vmware (
       }
 
     }
-    else
-    {
-      # DISABLE services
-      service { $services:
-        ensure     => stopped,
-        enable     => false,
-        hasstatus  => true,
-        hasrestart => true,
-      }
-      # PURGE $packages
-      ensure_packages(
-        $packages,
-        { 'ensure' => 'purged',
-          'require' => Service[ $services ],
-        }
-      )
-    }
+
   }
 
 }

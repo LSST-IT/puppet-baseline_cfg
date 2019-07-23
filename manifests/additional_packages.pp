@@ -2,33 +2,51 @@
 #
 # @summary 
 # Install additional packages as specified in Hiera
-# Hiera Keys:
-#   baseline_cfg::additional_packages::<OSFAMILY>
-#       where <OSFAMILY> refers to the puppet fact by the same name
-#       and is spelled the same
-#       Common OSFAMILY spellings: RedHat, Debian
-#       Example Hiera:
-#           ---
-#           baseline_cfg::additional_packages::RedHat:
-#               - mesa-LibGL
-#               - another-package
-# NOTE: This class is defined to simply ensure the package is installed. The
-#       functionality of specifying a specific version of a package was purposely
-#       left out. Enforcing specific versions of packages seems better handled
-#       by a user environment management software (ie: modules, eups, etc.)
 #
+# @param pkg_list Hash of package names to install
+#   Keys must be an OS Family name
+#   Values must be a Hash of the format:
+#       Key = package name
+#           A package name can be prefixed with "-" to remove it from the list.
+#           In this way, a higher level hiera layer can remove a package added
+#           by a lower, common layer.
+#
+#       Value (optional):
+#           1. <EMPTY> in which case, the package will be installed
+#           2. <HASH> conataining valid attributes for the 
+#              "package" native puppet resource type
 #
 # @example
 #   include baseline_cfg::additional_packages
-class baseline_cfg::additional_packages {
+#
+# @example
+#   ---
+#   stdcfg::additional_packages::pkg_list:
+#       'bash-completion':
+#           ensure: absent
+#       'gcc-c++':
+#       'net-tools':
+#           ensure: installed
+#       'bindutils':
+#           ensure: 17.1.19
 
-    # Merge lists of package names found in Hiera
-    $hiera_key = "baseline_cfg::additional_packages::${facts['os']['family']}"
-    $pkg_list = lookup( $hiera_key,
-                        Array[ String[1] ],
-                        'unique',
-    )
+class baseline_cfg::additional_packages (
+    Hash $pkg_list,
+) {
+
+    # Default value (for bare package names)
+    $default = {'ensure' => 'installed'}
+
+    # Limit list of packages by OS Family
+    $packages = $pkg_list[ $facts['os']['family'] ]
+
+    # Find keys without a value and add default value
+    $sane_pkg_list = $packages.map |$key, $val| {
+        if $val { [ $key, $val ] }
+        else { [ $key, $default ] }
+    }.convert_to(Hash)
+
     # Ensure packages
-    ensure_packages( $pkg_list )
+    ensure_packages( $sane_pkg_list, {'ensure' => 'installed'} )
 
 }
