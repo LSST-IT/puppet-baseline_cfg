@@ -25,7 +25,7 @@ The `baseline_cfg` module affects the following services on a given server:
 
   * basic package installation
   * email configuration
-  * firewall configuration
+  * firewall minimal configuration
   * motd configuration
   * puppet client configuration
 
@@ -33,8 +33,10 @@ In addition, for non-container deployments this module affects the following ser
 
   * disk and partition configuration
   * dns resolution configuration
+  * firewall basic configuration
   * network configuration
   * selinux configuration
+  * sshd configuration
   * syslog configuration
   * time configuration
   * vmtools configuration
@@ -46,7 +48,10 @@ This module requires the following puppet modules to be installed:
 
   * https://forge.puppet.com/beergeek/chronyd
   * https://forge.puppet.com/crayfishx/firewalld
+  * https://forge.puppet.com/herculesteam/augeasproviders_core
+  * https://forge.puppet.com/herculesteam/augeasproviders_ssh
   * https://forge.puppet.com/puppetlabs/inifile
+  * https://forge.puppet.com/puppetlabs/lvm
   * https://forge.puppet.com/puppetlabs/stdlib
   * https://forge.puppet.com/saz/timezone
 
@@ -66,6 +71,8 @@ The following parameters let you extend baseline_cfg options beyond the default:
   * `baseline_cfg::email::virtual_aliases` - String of virutal email aliases
   * `baseline_cfg::email::mydomain` - String of domain used by email
   * `baseline_cfg::email::relayhost` - String of relayhost used by email (smtp server)
+  * `baseline_cfg::lvm::default_fs_type` - String of filesystem type for new LVM partitions
+  * `baseline_cfg::lvm::lvms` - Hash of LVM partitions using parameters for ::lvm class
   * `baseline_cfg::motd::next_maintenance` - Array of start/stop date/times
   * `baseline_cfg::motd::next_maintenance_details` - String with more details for maintenance
   * `baseline_cfg::motd::next_maintenance_timezone` - String with timezone for maintenance
@@ -76,6 +83,14 @@ The following parameters let you extend baseline_cfg options beyond the default:
   * `baseline_cfg::puppet::server` - String of puppet server to use
   * `baseline_cfg::puppet::service_state` - String of puppet agent server status
   * `baseline_cfg::selinux::status` - String of status for SElinux
+  * `baseline_cfg::sshd::allowed_subnets` - Array of subnets allowed to access sshd
+  * `baseline_cfg::sshd::config` - Hash of sshd config parameters usable by ::ssh
+  * `baseline_cfg::sshd::config_matches` - Hash of sshd config match parameters usable by ::ssh
+  * `baseline_cfg::sshd::revoked_keys` - Array of revoked ssh public keys
+  * `baseline_cfg::sshd::required_packages` - Array of required packages for sshd
+  * `baseline_cfg::sshd::revoked_keys_file` - String of full path to revoked keys file for sshd
   * `baseline_cfg::time::ntp_servers` - Array of ntp servers to use
   * `baseline_cfg::time::timezone` - String of timezone to use
+  * `baseline_cfg::vmware::packages` - Array of packages required for vmware vms
+  * `baseline_cfg::vmware::services` - Array of services needed for vmware vms
 

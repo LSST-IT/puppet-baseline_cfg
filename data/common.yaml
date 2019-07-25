@@ -1,10 +1,24 @@
 ---
+lookup_options:
+    baseline_cfg::sshd::allowed_subnets:
+        merge: deep
+    baseline_cfg::sshd::config:
+        merge: hash
+    baseline_cfg::sshd::config_matches:
+        merge:
+            strategy: deep
+            knockout_prefix: '-'
+    baseline_cfg::sshd::revoked_keys:
+        merge: deep
+
 baseline_cfg::email::canonical_aliases: |
   root /dev/null
 baseline_cfg::email::virtual_aliases: |
   root /dev/null
 baseline_cfg::email::mydomain: 'local'
 baseline_cfg::email::relayhost: 'localhost'
+
+baseline_cfg::lvm::default_fs_type: 'xfs'
 
 baseline_cfg::motd::next_maintenance:
   - 'none'
@@ -19,6 +33,10 @@ baseline_cfg::puppet::server: puppet
 baseline_cfg::puppet::service_state: running
 
 baseline_cfg::selinux::status: 'disabled'
+
+baseline_cfg::sshd::allowed_subnets: []
+baseline_cfg::sshd::config_matches: {}
+baseline_cfg::sshd::revoked_keys: []
 
 baseline_cfg::time::ntp_servers
   - 'pool.ntp.org'
