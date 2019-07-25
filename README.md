@@ -10,7 +10,6 @@
     * [Beginning with baseline_cfg](#beginning-with-baseline_cfg)
 3. [Usage - Configuration options and additional functionality](#usage)
 4. [Limitations - OS compatibility, etc.](#limitations)
-5. [Development - Guide for contributing to the module](#development)
 
 ## Description
 
@@ -26,14 +25,27 @@ The `baseline_cfg` module affects the following services on a given server:
 
   * basic package installation
   * email configuration
+  * firewall configuration
+  * motd configuration
+  * puppet client configuration
+
+In addition, for non-container deployments this module affects the following services on a given server:
+
+  * disk and partition configuration
+  * dns resolution configuration
+  * network configuration
   * selinux configuration
+  * syslog configuration
   * time configuration
+  * vmtools configuration
+  * yum mirror repo configuration
 
 ### Setup Requirements
 
 This module requires the following puppet modules to be installed:
 
   * https://forge.puppet.com/beergeek/chronyd
+  * https://forge.puppet.com/crayfishx/firewalld
   * https://forge.puppet.com/puppetlabs/inifile
   * https://forge.puppet.com/puppetlabs/stdlib
   * https://forge.puppet.com/saz/timezone
