@@ -14,6 +14,10 @@ class baseline_cfg {
 #    include ::baseline_cfg::firewall_init
     include ::baseline_cfg::motd
     include ::baseline_cfg::puppet
+    include ::baseline_cfg::sshd
+    include ::baseline_cfg::rsyslog
+    include ::baseline_cfg::time
+    include ::baseline_cfg::vmware
 
     ## NON-CONTAINER CONFIGURATION
     ## MAY NEED TO ADD ADDITIONAL CONTAINER TYPES BELOW
@@ -24,10 +28,6 @@ class baseline_cfg {
 #        include ::baseline_cfg::firewall_config
 #        include ::baseline_cfg::network
         include ::baseline_cfg::selinux
-        include ::baseline_cfg::sshd
-        include ::baseline_cfg::rsyslog
-        include ::baseline_cfg::time
-        include ::baseline_cfg::vmware
 #        include ::baseline_cfg::yum_repo
     }
 

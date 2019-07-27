@@ -28,6 +28,10 @@ The `baseline_cfg` module affects the following services on a given server:
   * firewall minimal configuration
   * motd configuration
   * puppet client configuration
+  * syslog configuration
+  * sshd configuration
+  * time configuration
+  * vmtools configuration
 
 In addition, for non-container deployments this module affects the following services on a given server:
 
@@ -36,10 +40,6 @@ In addition, for non-container deployments this module affects the following ser
   * firewall basic configuration
   * network configuration
   * selinux configuration
-  * sshd configuration
-  * syslog configuration
-  * time configuration
-  * vmtools configuration
   * yum mirror repo configuration
 
 ### Setup Requirements
