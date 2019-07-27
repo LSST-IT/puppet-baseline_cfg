@@ -92,6 +92,7 @@ class baseline_cfg::sshd (
     }
 
     # SSHD CONFIG SETTINGS
+    # USING https://forge.puppet.com/herculesteam/augeasproviders_ssh
 
     # Default sshd_config attributes
     $config_defaults = {

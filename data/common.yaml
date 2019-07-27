@@ -1,15 +1,17 @@
 ---
 lookup_options:
-    baseline_cfg::sshd::allowed_subnets:
-        merge: deep
-    baseline_cfg::sshd::config:
-        merge: hash
-    baseline_cfg::sshd::config_matches:
-        merge:
-            strategy: deep
-            knockout_prefix: '-'
-    baseline_cfg::sshd::revoked_keys:
-        merge: deep
+  baseline_cfg::rsyslog::config:
+    merge: hash
+  baseline_cfg::sshd::allowed_subnets:
+    merge: deep
+  baseline_cfg::sshd::config:
+    merge: hash
+  baseline_cfg::sshd::config_matches:
+    merge:
+      strategy: deep
+      knockout_prefix: '-'
+  baseline_cfg::sshd::revoked_keys:
+    merge: deep
 
 baseline_cfg::email::canonical_aliases: |
   root /dev/null
@@ -31,6 +33,15 @@ baseline_cfg::puppet::environment: production
 baseline_cfg::puppet::runinterval: 30m
 baseline_cfg::puppet::server: puppet
 baseline_cfg::puppet::service_state: running
+
+baseline_cfg::rsyslog::yumrepo_name: 'Rsyslog Repo'
+baseline_cfg::rsyslog::yumrepo_baseurl: 'http://rpms.adiscon.com/v8-stable/epel-7/x86_64'
+baseline_cfg::rsyslog::yumrepo_gpgkey: 'http://rpms.adiscon.com/RPM-GPG-KEY-Adiscon'
+baseline_cfg::rsyslog::config:
+  log_local: true
+  remote_servers: false
+  remote_type: 'tcp'
+  preserve_fqdn: true
 
 baseline_cfg::selinux::status: 'disabled'
 

@@ -25,7 +25,7 @@ class baseline_cfg {
 #        include ::baseline_cfg::network
         include ::baseline_cfg::selinux
         include ::baseline_cfg::sshd
-#        include ::baseline_cfg::syslog
+        include ::baseline_cfg::rsyslog
         include ::baseline_cfg::time
         include ::baseline_cfg::vmware
 #        include ::baseline_cfg::yum_repo

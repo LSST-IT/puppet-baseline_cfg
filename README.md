@@ -53,6 +53,7 @@ This module requires the following puppet modules to be installed:
   * https://forge.puppet.com/puppetlabs/inifile
   * https://forge.puppet.com/puppetlabs/lvm
   * https://forge.puppet.com/puppetlabs/stdlib
+  * https://forge.puppet.com/saz/rsyslog
   * https://forge.puppet.com/saz/timezone
 
 ### Beginning with baseline_cfg
@@ -82,6 +83,10 @@ The following parameters let you extend baseline_cfg options beyond the default:
   * `baseline_cfg::puppet::runinterval` - String of puppet agent run interval
   * `baseline_cfg::puppet::server` - String of puppet server to use
   * `baseline_cfg::puppet::service_state` - String of puppet agent server status
+  * `baseline_cfg::rsyslog::yumrepo_name` - String of rsyslog yum repo name
+  * `baseline_cfg::rsyslog::yumrepo_baseurl` - String of rsyslog yum repo URL
+  * `baseline_cfg::rsyslog::yumrepo_gpgkey` - String of rsyslog yum repo GPG path/URL
+  * `baseline_cfg::rsyslog::config` - Hash of rsyslog client settings from saz/rsyslog
   * `baseline_cfg::selinux::status` - String of status for SElinux
   * `baseline_cfg::sshd::allowed_subnets` - Array of subnets allowed to access sshd
   * `baseline_cfg::sshd::config` - Hash of sshd config parameters usable by ::ssh
