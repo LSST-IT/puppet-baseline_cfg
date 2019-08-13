@@ -30,7 +30,6 @@ The `baseline_cfg` module affects the following services on a given server:
   * puppet client configuration
   * syslog configuration
   * sshd configuration
-  * time configuration
   * vmtools configuration
 
 In addition, for non-container deployments this module affects the following services on a given server:
@@ -39,7 +38,6 @@ In addition, for non-container deployments this module affects the following ser
   * dns resolution configuration
   * firewall basic configuration
   * network configuration
-  * selinux configuration
   * yum mirror repo configuration
 
 ### Setup Requirements
@@ -54,7 +52,6 @@ This module requires the following puppet modules to be installed:
   * https://forge.puppet.com/puppetlabs/lvm
   * https://forge.puppet.com/puppetlabs/stdlib
   * https://forge.puppet.com/saz/rsyslog
-  * https://forge.puppet.com/saz/timezone
 
 ### Beginning with baseline_cfg
 
@@ -78,24 +75,16 @@ The following parameters let you extend baseline_cfg options beyond the default:
   * `baseline_cfg::motd::next_maintenance_details` - String with more details for maintenance
   * `baseline_cfg::motd::next_maintenance_timezone` - String with timezone for maintenance
   * `baseline_cfg::motd::notice` - String with optional notice to include in motd
-  * `baseline_cfg::puppet::config_file` - String of puppet config file full path
-  * `baseline_cfg::puppet::environment` - String of puppet environment to use
-  * `baseline_cfg::puppet::runinterval` - String of puppet agent run interval
-  * `baseline_cfg::puppet::server` - String of puppet server to use
-  * `baseline_cfg::puppet::service_state` - String of puppet agent server status
   * `baseline_cfg::rsyslog::yumrepo_name` - String of rsyslog yum repo name
   * `baseline_cfg::rsyslog::yumrepo_baseurl` - String of rsyslog yum repo URL
   * `baseline_cfg::rsyslog::yumrepo_gpgkey` - String of rsyslog yum repo GPG path/URL
   * `baseline_cfg::rsyslog::config` - Hash of rsyslog client settings from saz/rsyslog
-  * `baseline_cfg::selinux::status` - String of status for SElinux
   * `baseline_cfg::sshd::allowed_subnets` - Array of subnets allowed to access sshd
   * `baseline_cfg::sshd::config` - Hash of sshd config parameters usable by ::ssh
   * `baseline_cfg::sshd::config_matches` - Hash of sshd config match parameters usable by ::ssh
   * `baseline_cfg::sshd::revoked_keys` - Array of revoked ssh public keys
   * `baseline_cfg::sshd::required_packages` - Array of required packages for sshd
   * `baseline_cfg::sshd::revoked_keys_file` - String of full path to revoked keys file for sshd
-  * `baseline_cfg::time::ntp_servers` - Array of ntp servers to use
-  * `baseline_cfg::time::timezone` - String of timezone to use
   * `baseline_cfg::vmware::packages` - Array of packages required for vmware vms
   * `baseline_cfg::vmware::services` - Array of services needed for vmware vms
 

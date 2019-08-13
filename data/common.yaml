@@ -4,6 +4,8 @@ lookup_options:
     merge:
       strategy: deep
       knockout_prefix: '-'
+  baseline_cfg::lvm::lvms:
+    merge: hash
   baseline_cfg::rsyslog::config:
     merge: hash
   baseline_cfg::sshd::allowed_subnets:
@@ -25,23 +27,19 @@ baseline_cfg::email::mydomain: 'local'
 baseline_cfg::email::relayhost: 'localhost'
 
 baseline_cfg::lvm::default_fs_type: 'xfs'
+baseline_cfg::lvm::lvms: {}
 
 baseline_cfg::motd::next_maintenance: [ 'none', 'none' ]
 baseline_cfg::motd::next_maintenance_details: ''
 baseline_cfg::motd::next_maintenance_timezone: 'UTC'
 baseline_cfg::motd::notice: ''
 
-baseline_cfg::puppet::config_file: '/etc/puppetlabs/puppet/puppet.conf'
-baseline_cfg::puppet::environment: production
-baseline_cfg::puppet::runinterval: 30m
-baseline_cfg::puppet::server: puppet
-baseline_cfg::puppet::service_state: running
+baseline_cfg::networkmanager::enable: false
+baseline_cfg::networkmanager::ensure: stopped
 
 baseline_cfg::rsyslog::yumrepo_name: 'Rsyslog Repo'
 baseline_cfg::rsyslog::yumrepo_baseurl: 'http://rpms.adiscon.com/v8-stable/epel-7/x86_64'
 baseline_cfg::rsyslog::yumrepo_gpgkey: 'http://rpms.adiscon.com/RPM-GPG-KEY-Adiscon'
-
-baseline_cfg::selinux::status: 'disabled'
 
 baseline_cfg::sshd::allowed_subnets: []
 baseline_cfg::sshd::config_matches: {}

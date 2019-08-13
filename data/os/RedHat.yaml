@@ -8,6 +8,9 @@ baseline_cfg::additional_packages::pkg_list:
 baseline_cfg::email::required_pkgs:
   - postfix
 
+
+baseline_cfg::networkmanager::service_name: NetworkManager
+
 baseline_cfg::sshd::required_packages:
   - openssh-server
 baseline_cfg::sshd::revoked_keys_file: /etc/ssh/revoked_keys
