@@ -15,7 +15,6 @@ class baseline_cfg {
     include ::baseline_cfg::rsyslog
     include ::baseline_cfg::sshd
     include ::baseline_cfg::vmware
-#TODO#    include ::baseline_cfg::firewall_init
 
 
     ## NON-CONTAINER CONFIGURATION
@@ -24,7 +23,6 @@ class baseline_cfg {
     {
         include ::baseline_cfg::lvm
         include ::baseline_cfg::networkmanager
-#TODO#        include ::baseline_cfg::firewall_config
 #TODO#        include ::baseline_cfg::yum_repo
     }
 
