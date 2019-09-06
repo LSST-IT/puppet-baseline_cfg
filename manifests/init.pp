@@ -13,17 +13,23 @@ class baseline_cfg {
     include ::baseline_cfg::email
     include ::baseline_cfg::motd
     include ::baseline_cfg::rsyslog
-    include ::baseline_cfg::sshd
     include ::baseline_cfg::vmware
 
-
-    ## NON-CONTAINER CONFIGURATION
-    ## MAY NEED TO ADD ADDITIONAL CONTAINER TYPES BELOW
-    if ( $::virtual !~ /docker/ )
-    {
-        include ::baseline_cfg::lvm
-        include ::baseline_cfg::networkmanager
-#TODO#        include ::baseline_cfg::yum_repo
+    ## OTHER MODULES DEPEND ON CONTAINER/VIRTUAL TYPE
+    $additional_modules = [
+        '::baseline_cfg::lvm',
+        '::baseline_cfg::networkmanager',
+        '::firewalld',
+        '::unbound',
+    ]
+    #exclude based on virtual type
+    $exclude_modules = $::virtual ? {
+        'docker'     => $additional_modules,
+#        'virtualbox' => [ '::unbound' ],
+        default      => [],
     }
+    #include only relevant modules
+    $select_modules = $additional_modules - $exclude_modules
+    include $select_modules
 
 }

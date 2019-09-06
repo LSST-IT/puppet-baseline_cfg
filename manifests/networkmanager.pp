@@ -6,9 +6,9 @@ class baseline_cfg::networkmanager (
     String  $service_name,
 ) {
 
-	service { $service_name:
-		ensure => $ensure,
-		enable => $enable,
-	}
+    service { $service_name:
+        ensure => $ensure,
+        enable => $enable,
+    }
 
 }
