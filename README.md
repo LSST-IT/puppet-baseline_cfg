@@ -45,9 +45,9 @@ In addition, for non-container deployments this module affects the following ser
 This module requires the following puppet modules to be installed:
 
   * https://forge.puppet.com/beergeek/chronyd
-  * https://forge.puppet.com/crayfishx/firewalld
   * https://forge.puppet.com/herculesteam/augeasproviders_core
   * https://forge.puppet.com/herculesteam/augeasproviders_ssh
+  * https://forge.puppet.com/puppetlabs/firewall
   * https://forge.puppet.com/puppetlabs/inifile
   * https://forge.puppet.com/puppetlabs/lvm
   * https://forge.puppet.com/puppetlabs/stdlib

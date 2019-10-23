@@ -19,13 +19,12 @@ class baseline_cfg {
     $additional_modules = [
         '::baseline_cfg::lvm',
         '::baseline_cfg::networkmanager',
-        '::firewalld',
+        '::baseline_cfg::firewall',
         '::unbound',
     ]
     #exclude based on virtual type
     $exclude_modules = $::virtual ? {
         'docker'     => $additional_modules,
-#        'virtualbox' => [ '::unbound' ],
         default      => [],
     }
     #include only relevant modules
