@@ -12,6 +12,8 @@ baseline_cfg::additional_packages::pkg_list:
         time:
         traceroute:
 
+baseline_cfg::additional_yumrepos::repo_list: {}
+
 baseline_cfg::email::required_pkgs:
   - postfix
 
