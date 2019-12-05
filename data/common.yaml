@@ -4,9 +4,11 @@ lookup_options:
     merge:
       strategy: deep
       knockout_prefix: '-'
+  baseline_cfg::additional_yumrepos::repo_list:
+    merge:
+      strategy: deep
+      knockout_prefix: '-'
   baseline_cfg::lvm::lvms:
-    merge: hash
-  baseline_cfg::rsyslog::config:
     merge: hash
   baseline_cfg::sshd::allowed_subnets:
     merge: deep
@@ -36,10 +38,6 @@ baseline_cfg::motd::notice: ''
 
 baseline_cfg::networkmanager::enable: false
 baseline_cfg::networkmanager::ensure: stopped
-
-baseline_cfg::rsyslog::yumrepo_name: 'Rsyslog Repo'
-baseline_cfg::rsyslog::yumrepo_baseurl: 'http://rpms.adiscon.com/v8-stable/epel-7/x86_64'
-baseline_cfg::rsyslog::yumrepo_gpgkey: 'http://rpms.adiscon.com/RPM-GPG-KEY-Adiscon'
 
 baseline_cfg::sshd::allowed_subnets: []
 baseline_cfg::sshd::config_matches: {}

@@ -12,7 +12,6 @@ class baseline_cfg {
     include ::baseline_cfg::additional_packages
     include ::baseline_cfg::email
     include ::baseline_cfg::motd
-    include ::baseline_cfg::rsyslog
     include ::baseline_cfg::vmware
 
     ## OTHER MODULES DEPEND ON CONTAINER/VIRTUAL TYPE
@@ -31,4 +30,8 @@ class baseline_cfg {
     $select_modules = $additional_modules - $exclude_modules
     include $select_modules
 
+    ## yum repos only valid for RedHat family
+    if $facts['os']['family'] == 'RedHat' {
+        include ::baseline_cfg::additional_yumrepos
+    }
 }
