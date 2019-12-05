@@ -30,8 +30,12 @@ class baseline_cfg {
     $select_modules = $additional_modules - $exclude_modules
     include $select_modules
 
-    ## yum repos only valid for RedHat family
-    if $facts['os']['family'] == 'RedHat' {
-        include ::baseline_cfg::additional_yumrepos
+    ## OS specific includes
+    case $facts['os']['family'] {
+        'RedHat': {
+			include ::baseline_cfg::additional_yumrepos
+            include ::baseline_cfg::yum
+        }
     }
+
 }
