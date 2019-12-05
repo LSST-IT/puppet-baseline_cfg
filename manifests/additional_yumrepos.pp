@@ -21,8 +21,8 @@ class baseline_cfg::additional_yumrepos (
     Hash $repo_list,
 ) {
     $defaults = {
-        'ensure'  => 'present',
-        'enabled' => true,
+      ensure  => present,
+      enabled => true,
     }
 
     ensure_resources( 'yumrepo', $repo_list, $defaults )

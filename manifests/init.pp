@@ -33,7 +33,7 @@ class baseline_cfg {
     ## OS specific includes
     case $facts['os']['family'] {
         'RedHat': {
-			include ::baseline_cfg::additional_yumrepos
+            include ::baseline_cfg::additional_yumrepos
             include ::baseline_cfg::yum
         }
     }
