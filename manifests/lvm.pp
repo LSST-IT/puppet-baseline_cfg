@@ -1,12 +1,13 @@
-# A description of what this class does
+# @summary Create and manage LVMs (and file systems) using lvm module.
 #
-# @summary Create and manage LVMs (and file systems) using lvm module. This could include:
+# This could include:
 #   - LVMs that were created in VGsystem by xCAT
 #   - LVMs that first created manually
 #   - LVMs that are created new by Puppet
 #
 # @example
 #   include baseline_cfg::lvm
+#
 # @param default_fs_type
 #   String
 #   WARNING: default = xfs via data-in-module for this. Overrides default of ext4 from ::lvm module. 
@@ -14,6 +15,7 @@
 #   fs_type and your existing LVM has a different type, it seems that it would reformat the fs. But
 #   since the ::lvm module already has a default, let's override it with a better one for the LSST
 #   environment.
+#
 # @param lvms
 #   Hash
 #   Key-value pairs used to declare ::lvm::logical_volume resources. Lookup is merge, but not deep.

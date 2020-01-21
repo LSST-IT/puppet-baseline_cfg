@@ -19,12 +19,6 @@ baseline_cfg::email::required_pkgs:
 
 baseline_cfg::networkmanager::service_name: NetworkManager
 
-baseline_cfg::sshd::required_packages:
-  - openssh-server
-baseline_cfg::sshd::revoked_keys_file: /etc/ssh/revoked_keys
-baseline_cfg::sshd::config:
-    UsePAM: 'yes'
-
 baseline_cfg::vmware::packages:
   - open-vm-tools
 baseline_cfg::vmware::services:

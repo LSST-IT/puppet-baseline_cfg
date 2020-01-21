@@ -10,16 +10,6 @@ lookup_options:
       knockout_prefix: '-'
   baseline_cfg::lvm::lvms:
     merge: hash
-  baseline_cfg::sshd::allowed_subnets:
-    merge: deep
-  baseline_cfg::sshd::config:
-    merge: hash
-  baseline_cfg::sshd::config_matches:
-    merge:
-      strategy: deep
-      knockout_prefix: '-'
-  baseline_cfg::sshd::revoked_keys:
-    merge: deep
 
 baseline_cfg::email::canonical_aliases: |
   root /dev/null
@@ -38,7 +28,3 @@ baseline_cfg::motd::notice: ''
 
 baseline_cfg::networkmanager::enable: false
 baseline_cfg::networkmanager::ensure: stopped
-
-baseline_cfg::sshd::allowed_subnets: []
-baseline_cfg::sshd::config_matches: {}
-baseline_cfg::sshd::revoked_keys: []

@@ -1,8 +1,6 @@
-# baseline_cfg
-#
-# Core set of things that apply to ALL nodes across the board (no exceptions)
-#
 # @summary Core set of things that apply to ALL nodes across the board (no exceptions)
+#
+# @see https://github.com/lsst-it/puppet-baseline_cfg
 #
 # @example
 #   include baseline_cfg

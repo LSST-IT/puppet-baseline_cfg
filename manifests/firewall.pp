@@ -1,4 +1,4 @@
-# @summary Initial firewall configuration
+# @summary Initial firewall configuration (suitable for K8S)
 #
 # @example
 #   include baseline_cfg::firewall

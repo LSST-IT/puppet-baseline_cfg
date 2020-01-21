@@ -1,7 +1,3 @@
-# baseline_cfg::motd
-# 
-# Configure motd
-#
 # @summary Configure motd
 #
 # @param next_maintenance

@@ -1,7 +1,3 @@
-# baseline_cfg::vmware
-#
-# A description of what this class does
-#
 # @summary Manage settings related to virtual machines, e.g. vmware
 #
 # @example

@@ -1,5 +1,3 @@
-# baseline_cfg::email
-#
 # @summary Basic email setup
 #
 # @example

@@ -1,7 +1,4 @@
-# baseline_cfg::additional_packages
-#
-# @summary 
-# Install additional packages as specified in Hiera
+# @summary Install additional packages as specified in Hiera
 #
 # @param pkg_list Hash of package names to install
 #   Keys must be an OS Family name

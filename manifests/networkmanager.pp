@@ -1,4 +1,4 @@
-# @summary Start / Stop NetworkManager service
+# @summary Start or Stop NetworkManager service
 #
 class baseline_cfg::networkmanager (
     String  $ensure,
