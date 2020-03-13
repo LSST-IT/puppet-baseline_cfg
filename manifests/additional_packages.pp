@@ -18,7 +18,7 @@
 #
 # @example
 #   ---
-#   stdcfg::additional_packages::pkg_list:
+#   baseline_cfg::additional_packages::pkg_list:
 #       'bash-completion':
 #           ensure: absent
 #       'gcc-c++':
