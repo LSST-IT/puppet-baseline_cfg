@@ -19,6 +19,7 @@
 # @example
 #   ---
 #   baseline_cfg::additional_packages::pkg_list:
+#     RedHat:
 #       'bash-completion':
 #           ensure: absent
 #       'gcc-c++':
